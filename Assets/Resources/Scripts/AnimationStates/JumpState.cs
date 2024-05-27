@@ -1,7 +1,5 @@
 ﻿
 
-using UnityEngine;
-
 public class JumpState : IState
 {
     public void Enter(PlayerAnimator playerAnimator)
@@ -12,20 +10,7 @@ public class JumpState : IState
 
     public void Execute(PlayerAnimator playerAnimator)
     {
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            UnityEngine.Debug.Log("JumpState Execute Durumundayım.");
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            playerAnimator.ChangeState(new RunState());
-        }
-        else
-        {
-            playerAnimator.ChangeState(new IdleState());
-        }
-
+        UnityEngine.Debug.Log("JumpState Execute Durumundayım.");
     }
 
     public void Exit(PlayerAnimator playerAnimator)

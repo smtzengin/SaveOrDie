@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b7443f78a54814bb89b1cd03dfd83b, type: 3}
+  m_Name: AK47
+  m_EditorClassIdentifier: 
+  Gun: {fileID: 0}
+  GunName: AK-47
+  ClipCount: 30
+  MaxClipCount: 120
+  BodyDamage: 35
+  HeadDamage: 100
+  ParticleEffect: {fileID: 0}

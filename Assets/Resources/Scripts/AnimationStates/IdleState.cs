@@ -1,6 +1,5 @@
 ﻿
 
-using UnityEngine;
 
 public class IdleState : IState
 {
@@ -13,19 +12,6 @@ public class IdleState : IState
     public void Execute(PlayerAnimator playerAnimator)
     {
         UnityEngine.Debug.Log("IdleState Execute Durumundayım.");
-
-        if(Input.GetKey(KeyCode.W))
-        {
-            playerAnimator.ChangeState(new RunState());
-        }
-        else if (Input.GetMouseButtonDown(0))
-        {
-            playerAnimator.ChangeState(new ShootState());
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            playerAnimator.ChangeState(new JumpState());
-        }
         
     }
 
