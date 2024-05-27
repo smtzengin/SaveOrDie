@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   Gun: {fileID: 1742564157128692199, guid: 2cccb865b3ee77a49a745b0563d2eb98, type: 3}
+  Sprite: {fileID: 0}
   GunName: Pistol
   ClipCount: 10
   MaxClipCount: 40
+  SpareBullets: 10
   BodyDamage: 20
   HeadDamage: 45
   ParticleEffect: {fileID: 0}

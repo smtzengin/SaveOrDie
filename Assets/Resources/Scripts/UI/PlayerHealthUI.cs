@@ -1,6 +1,4 @@
-
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -14,9 +12,10 @@ public class PlayerHealthUI : MonoBehaviour
     private float duration = 0.1f;
     private float scaleMultiplier = 1.2f;
 
-    private void Awake()
+    private void Start()
     {
         playerHealth.OnPlayerHealthChanged += PlayerHealth_OnPlayerHealthChanged;
+        PlayerHealth_OnPlayerHealthChanged();
     }
 
     private void PlayerHealth_OnPlayerHealthChanged()
@@ -25,9 +24,8 @@ public class PlayerHealthUI : MonoBehaviour
         Vector3 targetScale = originalScale * scaleMultiplier;
 
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(image.transform.DOScale(targetScale, duration / 2).SetEase(Ease.OutQuad))
-                .Append(image.transform.DOScale(originalScale, duration / 2).SetEase(Ease.InQuad))
-                .SetLoops(-1, LoopType.Restart);
+        sequence.Append(playerHealthImage.transform.DOScale(targetScale, duration / 2).SetEase(Ease.OutQuad))
+                .Append(playerHealthImage.transform.DOScale(originalScale, duration / 2).SetEase(Ease.InQuad));
 
         playerHealthText.text = playerHealth.currentHealth.ToString();
     }

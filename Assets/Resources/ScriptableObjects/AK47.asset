@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b7443f78a54814bb89b1cd03dfd83b, type: 3}
   m_Name: AK47
   m_EditorClassIdentifier: 
-  Gun: {fileID: 0}
+  Gun: {fileID: 5378892161395944215, guid: c3f806a521f303944a1ceadf409c5027, type: 3}
+  Sprite: {fileID: 0}
   GunName: AK-47
   ClipCount: 30
   MaxClipCount: 120
+  SpareBullets: 30
   BodyDamage: 35
   HeadDamage: 100
   ParticleEffect: {fileID: 0}
