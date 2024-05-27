@@ -38206,6 +38206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052357091214593478}
   - component: {fileID: 1052357091214593479}
+  - component: {fileID: 1052357091214593480}
   m_Layer: 0
   m_Name: Character_Soldier
   m_TagString: Untagged
@@ -38558,6 +38559,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1052357091214593480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419232369728673660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd37ef064c875ca41b4e523c2c5c56d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1058688806443615905
 GameObject:
   m_ObjectHideFlags: 0
