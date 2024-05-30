@@ -7,17 +7,16 @@ public class AIController : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;
     public AreaCheck areaCheck;
-    public EnemyAnimator enemyAnimator; // EnemyAnimator referansı
+    public EnemyAnimator enemyAnimator; 
     public float wanderRadius = 10f;
     public float stopDistance = 2f;
-    public float attackDistance = 2f; // Saldırı mesafesi
-    public int attackDamage = 10; // Saldırı hasarı
-    public float attackCooldown = 2f; // Saldırı bekleme süresi
+    public float attackDistance = 2f; 
+    public int attackDamage = 10; 
+    public float attackCooldown = 2f; 
 
     private Transform target;
     private bool isWandering;
     private bool canAttack = true;
-
     private void Start()
     {
         areaCheck.aiController = this;
@@ -26,6 +25,7 @@ public class AIController : MonoBehaviour
 
     private void Update()
     {
+        if(EnemyController.instance.isDead) return;
         if (target != null)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
@@ -62,7 +62,7 @@ public class AIController : MonoBehaviour
         canAttack = false;
         enemyAnimator.SetAnimState(EnemyAnimator.AnimState.Attack);
 
-        yield return new WaitForSeconds(0.5f); // Saldırı animasyonunun ortasında hasar ver
+        yield return new WaitForSeconds(0.5f); 
 
         if (target != null && Vector3.Distance(transform.position, target.position) <= attackDistance)
         {
@@ -73,7 +73,7 @@ public class AIController : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(attackCooldown); // Saldırı bekleme süresi
+        yield return new WaitForSeconds(attackCooldown); 
         canAttack = true;
     }
 

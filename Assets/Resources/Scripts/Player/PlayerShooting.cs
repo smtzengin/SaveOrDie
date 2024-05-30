@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public Camera playerCamera; // Oyuncunun kamerası
+    public Camera playerCamera; 
     private PlayerGunHolder playerGunHolder;
     public event Action<IGun> OnPlayerShooting;
     public GameObject bulletPrefab;

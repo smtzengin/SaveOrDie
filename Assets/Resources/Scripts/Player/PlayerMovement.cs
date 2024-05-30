@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth != null && playerHealth.currentHealth == 0) return; 
-
+        if (playerHealth != null && playerHealth.currentHealth == 0) return;
+       
         GroundCheck();
         Move();
         Jump();
@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        if (!QuestManager.instance.isQuestStarted) return;
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -65,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        //if (!QuestManager.instance.isQuestStarted) return;
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);

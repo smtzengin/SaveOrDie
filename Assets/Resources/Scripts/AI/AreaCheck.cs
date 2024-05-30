@@ -10,7 +10,6 @@ public class AreaCheck : MonoBehaviour
     {
         if (other != null && other.CompareTag("Player"))
         {
-            Debug.Log("Düşman Tespit Edildi!");
             aiController.SetTarget(other.transform);
         }
     }
@@ -27,7 +26,6 @@ public class AreaCheck : MonoBehaviour
     {
         if (other != null && other.CompareTag("Player"))
         {
-            Debug.Log("Düşman alandan çıktı!");
             aiController.ClearTarget();
         }
     }

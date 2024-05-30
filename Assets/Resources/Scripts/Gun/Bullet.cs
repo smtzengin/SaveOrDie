@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 100f;
     public int damage;
 
     private void Update()
@@ -20,14 +20,26 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            if (enemy != null && enemy.health > 0)
             {
                 enemy.TakeDamage(damage);
+                Vector3 spawnParticlePos = new Vector3(enemy.transform.position.x,enemy.transform.position.y + 1, enemy.transform.position.z);
+                var randomParticle = Random.Range(0,GameManager.Instance.hitParticles.Length);
+                Instantiate(GameManager.Instance.hitParticles[randomParticle], spawnParticlePos, Quaternion.identity);         
                 Destroy(this.gameObject);
             }
+        }
+        else
+        {
+            StartCoroutine(DestroyBullet());
         }
         
     }
 
+    IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(this.gameObject);
+    }
 }
