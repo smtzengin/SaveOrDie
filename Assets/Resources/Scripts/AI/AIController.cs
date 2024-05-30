@@ -26,6 +26,7 @@ public class AIController : MonoBehaviour
     private void Update()
     {
         if(EnemyController.instance.isDead) return;
+
         if (target != null)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
