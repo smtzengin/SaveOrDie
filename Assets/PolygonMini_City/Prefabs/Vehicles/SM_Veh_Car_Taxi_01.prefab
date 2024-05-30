@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4980041939180890}
   - component: {fileID: 33400441060769260}
   - component: {fileID: 23270303153295084}
-  - component: {fileID: -221523091225890274}
-  m_Layer: 0
+  - component: {fileID: 6465668408060565630}
+  m_Layer: 6
   m_Name: SM_Veh_Car_Taxi_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373260384903780}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -54,9 +54,9 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373260384903780}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -88,7 +88,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-221523091225890274
+--- !u!64 &6465668408060565630
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4790634462040590}
   - component: {fileID: 33696046942882788}
   - component: {fileID: 23051936123545180}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Car_Taxi_Wheel_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 4165395641389136}
   - component: {fileID: 33787325950468574}
   - component: {fileID: 23107919204355646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Car_Taxi_Wheel_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 4808434274233418}
   - component: {fileID: 33473602379467560}
   - component: {fileID: 23907196735837980}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Car_Taxi_Wheel_rr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 4762355800777330}
   - component: {fileID: 33395836302346376}
   - component: {fileID: 23019910069933028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Car_Taxi_Wheel_rl
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,8 +19,7 @@ public class AreaCheck : MonoBehaviour
     {
         if (other != null && other.CompareTag("Player"))
         {
-            Debug.Log("Düşman Tespit Edildi! halen yakınlarda");
-            aiController.SetTarget(other.transform);
+            aiController.SetTarget(other.transform); 
         }
     }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4291801481783956}
   - component: {fileID: 33329572916008824}
   - component: {fileID: 23797731121138578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Firetruck_Wheel_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4030201067681390}
   - component: {fileID: 33371220051341592}
   - component: {fileID: 23324369731328008}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Firetruck_Wheel_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,8 +177,8 @@ GameObject:
   - component: {fileID: 4454477619982306}
   - component: {fileID: 33170709727781826}
   - component: {fileID: 23118721843517888}
-  - component: {fileID: 142413271046373203}
-  m_Layer: 0
+  - component: {fileID: 6356816275418483967}
+  m_Layer: 6
   m_Name: SM_Veh_Firetruck_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069526804267886}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -221,9 +221,9 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069526804267886}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -255,7 +255,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &142413271046373203
+--- !u!64 &6356816275418483967
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 4211950918393002}
   - component: {fileID: 33991387674581554}
   - component: {fileID: 23143649995341844}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Firetruck_Wheel_rl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 4943329536342662}
   - component: {fileID: 33091930821167086}
   - component: {fileID: 23508369561110276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Firetruck_Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 4419620878883936}
   - component: {fileID: 33295540490351656}
   - component: {fileID: 23341158908015842}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Firetruck_Wheel_rr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 4701905183965058}
   - component: {fileID: 33773182806469100}
   - component: {fileID: 23277697046299534}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Veh_Firetruck_Ladder_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

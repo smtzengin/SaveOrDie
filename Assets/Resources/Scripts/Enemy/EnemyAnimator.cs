@@ -28,16 +28,12 @@ public class EnemyAnimator : MonoBehaviour
         {
             case AnimState.Idle:
                 anim.SetBool("isWalk", false);
-                anim.SetBool("isAttack", false);
                 break;
             case AnimState.Walk:
                 anim.SetBool("isWalk", true);
-                anim.SetBool("isAttack", false);
                 break;
             case AnimState.Attack:
-                anim.SetBool("isIdle", false);
-                anim.SetBool("isWalk", false);
-                anim.SetBool("isAttack",true);
+                anim.SetTrigger("isAttack");
                 break;
             case AnimState.Hit:
                 anim.SetTrigger("isHit");

@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public Transform firePoint;
+    public Camera playerCamera; // Oyuncunun kamerası
     private PlayerGunHolder playerGunHolder;
     public event Action<IGun> OnPlayerShooting;
     public GameObject bulletPrefab;
@@ -17,6 +17,9 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
+        if (playerGunHolder.playerPrimaryGun == null || playerGunHolder.playerSecondaryGun == null)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
@@ -33,29 +36,56 @@ public class PlayerShooting : MonoBehaviour
 
         int currentGun = playerGunHolder.GetCurrentGun();
 
-        switch(currentGun)
+        switch (currentGun)
         {
             case 0:
                 break;
             case 1:
                 var rifle = playerGunHolder.playerPrimaryGun.GetComponent<Rifle>();
-                if(rifle.ClipCount > 0)
+                if (rifle.ClipCount > 0)
                 {
-                    GameObject bullet = Instantiate(bulletPrefab,firePoint.position,Quaternion.identity);
-                    bullet.transform.position = firePoint.position;
-                    bullet.transform.rotation = firePoint.rotation;
+                    Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                    RaycastHit hit;
+                    Vector3 targetPoint;
+
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        targetPoint = hit.point;
+                    }
+                    else
+                    {
+                        targetPoint = ray.GetPoint(100); // Merminin ulaşacağı varsayılan nokta
+                    }
+
+                    Vector3 direction = (targetPoint - playerCamera.transform.position).normalized;
+                    GameObject bullet = Instantiate(bulletPrefab, playerCamera.transform.position, Quaternion.identity);
+                    bullet.transform.forward = direction;
                     bullet.GetComponent<Bullet>().Initialize(rifle.BodyDamage);
+
                     rifle.Shoot();
                     OnPlayerShooting?.Invoke(rifle);
                 }
                 break;
             case 2:
                 var pistol = playerGunHolder.playerSecondaryGun.GetComponent<Pistol>();
-                if(pistol.ClipCount > 0)
+                if (pistol.ClipCount > 0)
                 {
-                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-                    bullet.transform.position = firePoint.position;
-                    bullet.transform.rotation = firePoint.rotation;
+                    Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                    RaycastHit hit;
+                    Vector3 targetPoint;
+
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        targetPoint = hit.point;
+                    }
+                    else
+                    {
+                        targetPoint = ray.GetPoint(100); // Merminin ulaşacağı varsayılan nokta
+                    }
+
+                    Vector3 direction = (targetPoint - playerCamera.transform.position).normalized;
+                    GameObject bullet = Instantiate(bulletPrefab, playerCamera.transform.position, Quaternion.identity);
+                    bullet.transform.forward = direction;
                     bullet.GetComponent<Bullet>().Initialize(pistol.BodyDamage);
 
                     pistol.Shoot();
