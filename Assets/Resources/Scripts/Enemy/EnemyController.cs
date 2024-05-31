@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEditor.SceneManagement;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -12,9 +15,11 @@ public class EnemyController : MonoBehaviour
     private bool isGrounded;
     private NavMeshAgent navMeshAgent;
     private Rigidbody rb;
-
+    private AreaCheck areaCheck;
     private EnemyAnimator enemyAnimator;
     public bool isDead;
+
+    public Slider healthSlider;
     private void Awake()
     {
         instance = this;
@@ -22,6 +27,7 @@ public class EnemyController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         enemyAnimator = GetComponent<EnemyAnimator>();
+        areaCheck = GetComponentInChildren<AreaCheck>();
     }
 
     private void Update()
@@ -38,18 +44,26 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthSlider.value = health;
         if (health <= 0)
         {
             isDead = true;
             health = 0;
-            Die();
+            StartCoroutine(Die());
         }
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
         QuestManager.instance.IncrementQuestProgress(1);
         enemyAnimator.SetAnimState(EnemyAnimator.AnimState.Die);
-        
+        areaCheck.sphereCollider.enabled = false;
+        navMeshAgent.enabled = false; 
+        enemyAnimator.StopAllAnimations();
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
+
+
+
 }

@@ -1,22 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.AI;
 using UnityEngine;
-using UnityEngine.AI;
+using System.Collections;
 
 public class AIController : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;
     public AreaCheck areaCheck;
-    public EnemyAnimator enemyAnimator; 
+    public EnemyAnimator enemyAnimator;
     public float wanderRadius = 10f;
     public float stopDistance = 2f;
-    public float attackDistance = 2f; 
-    public int attackDamage = 10; 
-    public float attackCooldown = 2f; 
+    public float attackDistance = 2f;
+    public int attackDamage = 10;
+    public float attackCooldown = 2f;
 
     private Transform target;
     private bool isWandering;
     private bool canAttack = true;
+
     private void Start()
     {
         areaCheck.aiController = this;
@@ -25,7 +25,7 @@ public class AIController : MonoBehaviour
 
     private void Update()
     {
-        if(EnemyController.instance.isDead) return;
+        if (!navMeshAgent.isActiveAndEnabled) return;
 
         if (target != null)
         {
@@ -62,8 +62,7 @@ public class AIController : MonoBehaviour
     {
         canAttack = false;
         enemyAnimator.SetAnimState(EnemyAnimator.AnimState.Attack);
-
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(0.5f);
 
         if (target != null && Vector3.Distance(transform.position, target.position) <= attackDistance)
         {
@@ -74,7 +73,7 @@ public class AIController : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(attackCooldown); 
+        yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
     }
 
@@ -102,7 +101,10 @@ public class AIController : MonoBehaviour
             randomDirection += transform.position;
             NavMeshHit navHit;
             NavMesh.SamplePosition(randomDirection, out navHit, wanderRadius, -1);
-            navMeshAgent.SetDestination(navHit.position);
+            if(navMeshAgent.isActiveAndEnabled)
+            {
+                navMeshAgent.SetDestination(navHit.position);
+            }
 
             yield return new WaitForSeconds(5f);
         }

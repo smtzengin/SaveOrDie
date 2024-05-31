@@ -52,5 +52,15 @@ public class QuestManager : MonoBehaviour
     {
         questPanel.gameObject.SetActive(false);
         onQuestCompleted?.Invoke();
+        if(currentQuest.targetTag == "Enemy")
+        {
+            //TO DO: portal aktif
+            GameManager.Instance.ActivateTeleport();
+        }
+        else if(currentQuest.targetTag == "Boss")
+        {
+            //TO DO: Save the girl
+        }
+        
     }
 }

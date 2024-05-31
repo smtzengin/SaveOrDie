@@ -14,6 +14,13 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-
+    public void ActivateTeleport()
+    {
+        var teleportObject = FindObjectOfType<Teleport>(true);
+        if (teleportObject != null)
+        {
+            teleportObject.gameObject.SetActive(true);
+        }
+    }
 
 }

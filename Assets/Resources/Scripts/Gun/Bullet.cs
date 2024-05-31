@@ -30,6 +30,18 @@ public class Bullet : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            if (enemy != null && enemy.health > 0)
+            {
+                enemy.TakeDamage(damage);
+                Vector3 spawnParticlePos = new Vector3(enemy.transform.position.x, enemy.transform.position.y + 5, enemy.transform.position.z);
+                var randomParticle = Random.Range(0, GameManager.Instance.hitParticles.Length);
+                Instantiate(GameManager.Instance.hitParticles[randomParticle], spawnParticlePos, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+        }
         else
         {
             StartCoroutine(DestroyBullet());

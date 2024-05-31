@@ -5,6 +5,12 @@ using UnityEngine;
 public class AreaCheck : MonoBehaviour
 {
     public AIController aiController;
+    public SphereCollider sphereCollider;
+
+    private void Awake()
+    {
+        sphereCollider = GetComponent<SphereCollider>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

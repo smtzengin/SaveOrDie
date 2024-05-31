@@ -18,7 +18,6 @@ public class EnemyAnimator : MonoBehaviour
 
     private void Awake()
     {
-        if (EnemyController.instance.isDead) return;
         anim = GetComponent<Animator>();
         currentState = AnimState.Idle;
     }
@@ -26,6 +25,7 @@ public class EnemyAnimator : MonoBehaviour
     private void Update()
     {
         if (EnemyController.instance.isDead) { return; }
+
         switch (currentState)
         {
             case AnimState.Idle:
@@ -42,13 +42,20 @@ public class EnemyAnimator : MonoBehaviour
                 break;
             case AnimState.Die:
                 anim.SetTrigger("isDie");
-                EnemyController.instance.isDead = true;
                 break;
         }
     }
 
+
     public void SetAnimState(AnimState newState)
     {
         currentState = newState;
+    }
+    public void StopAllAnimations()
+    {
+        anim.SetBool("isWalk", false);
+        anim.ResetTrigger("isAttack");
+        anim.ResetTrigger("isHit");
+        anim.SetTrigger("isDie");
     }
 }

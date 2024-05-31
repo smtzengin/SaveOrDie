@@ -16,4 +16,4 @@ MonoBehaviour:
   targetObject: {fileID: 21300000, guid: c7e3b87afb091f346a6ddb8e8392dbcb, type: 3}
   targetTag: Enemy
   currentCount: 0
-  totalCount: 40
+  totalCount: 20
