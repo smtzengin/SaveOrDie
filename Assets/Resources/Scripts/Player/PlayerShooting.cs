@@ -3,16 +3,20 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public Camera playerCamera; 
+    public Camera playerCamera;
     private PlayerGunHolder playerGunHolder;
     public event Action<IGun> OnPlayerShooting;
     public GameObject bulletPrefab;
     private PlayerAnimator playerAnimator;
+    private AudioSource audioSource;
 
     private void Start()
     {
         playerGunHolder = GetComponent<PlayerGunHolder>();
         playerAnimator = GetComponent<PlayerAnimator>();
+        audioSource = GetComponent<AudioSource>();
+
+        AudioManager.instance.SubscribeAudioSource(audioSource, "Player");
     }
 
     private void Update()
@@ -63,6 +67,7 @@ public class PlayerShooting : MonoBehaviour
                     bullet.GetComponent<Bullet>().Initialize(rifle.BodyDamage);
 
                     rifle.Shoot();
+                    AudioManager.instance.PlayAudioClip(audioSource, "Ak");
                     OnPlayerShooting?.Invoke(rifle);
                 }
                 break;
@@ -89,6 +94,7 @@ public class PlayerShooting : MonoBehaviour
                     bullet.GetComponent<Bullet>().Initialize(pistol.BodyDamage);
 
                     pistol.Shoot();
+                    AudioManager.instance.PlayAudioClip(audioSource, "Pistol");
                     OnPlayerShooting?.Invoke(pistol);
                 }
                 break;

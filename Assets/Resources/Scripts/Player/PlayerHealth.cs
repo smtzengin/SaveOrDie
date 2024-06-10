@@ -10,13 +10,18 @@ public class PlayerHealth : MonoBehaviour
     public int minHealth;
     public bool isDead;
     public event Action OnPlayerHealthChanged;
+    public AudioSource audioSource;
 
 
     private void Awake()
     {
         isDead = false;
         currentHealth = maxHealth;
+
+        audioSource = GetComponent<AudioSource>();
+
     }
+
 
     public void TakeDamage(int damage)
     {

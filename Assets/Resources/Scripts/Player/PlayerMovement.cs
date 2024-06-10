@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,21 +15,23 @@ public class PlayerMovement : MonoBehaviour
     [Header("Other Player Components")]
     private PlayerAnimator playerAnimator;
     private PlayerHealth playerHealth;
-
+    private AudioSource audioSource;
 
     private Vector3 velocity;
     private bool isGrounded;
+    private bool isMoving;
 
     private void Awake()
     {
         playerAnimator = GetComponent<PlayerAnimator>();
         playerHealth = GetComponent<PlayerHealth>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if (playerHealth != null && playerHealth.currentHealth == 0) return;
-       
+
         GroundCheck();
         Move();
         Jump();
@@ -58,10 +61,16 @@ public class PlayerMovement : MonoBehaviour
         if (move != Vector3.zero)
         {
             playerAnimator.ChangeState(new RunState());
+            if (!isMoving)
+            {
+                isMoving = true;
+                StartCoroutine(PlayFootsteps());
+            }
         }
         else
         {
             playerAnimator.ChangeState(new IdleState());
+            isMoving = false;
         }
     }
 
@@ -78,5 +87,17 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private IEnumerator PlayFootsteps()
+    {
+        while (isMoving)
+        {
+            if (isGrounded)
+            {
+                AudioManager.instance.PlayAudioClip(audioSource, "PlayerFootstep");
+            }
+            yield return new WaitForSeconds(0.5f); // Adım seslerinin çalma sıklığı
+        }
     }
 }

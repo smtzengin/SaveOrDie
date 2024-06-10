@@ -15,11 +15,18 @@ public class EnemyAnimator : MonoBehaviour
 
     private Animator anim;
     public AnimState currentState;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         currentState = AnimState.Idle;
+        audioSource = GetComponentInParent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        AudioManager.instance.SubscribeAudioSource(audioSource, "Enemy");
     }
 
     private void Update()
@@ -36,6 +43,7 @@ public class EnemyAnimator : MonoBehaviour
                 break;
             case AnimState.Attack:
                 anim.SetTrigger("isAttack");
+                AudioManager.instance.PlayAudioClip(audioSource, "ZombieAttack");
                 break;
             case AnimState.Hit:
                 anim.SetTrigger("isHit");
@@ -46,11 +54,15 @@ public class EnemyAnimator : MonoBehaviour
         }
     }
 
-
     public void SetAnimState(AnimState newState)
     {
         currentState = newState;
+        if (newState == AnimState.Attack)
+        {
+            anim.SetTrigger("isAttack");
+        }
     }
+
     public void StopAllAnimations()
     {
         anim.SetBool("isWalk", false);

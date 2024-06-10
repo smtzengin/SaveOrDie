@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     public bool isDead;
 
     public Slider healthSlider;
+
     private void Awake()
     {
         instance = this;
@@ -29,6 +30,8 @@ public class EnemyController : MonoBehaviour
         enemyAnimator = GetComponent<EnemyAnimator>();
         areaCheck = GetComponentInChildren<AreaCheck>();
     }
+
+
 
     private void Update()
     {

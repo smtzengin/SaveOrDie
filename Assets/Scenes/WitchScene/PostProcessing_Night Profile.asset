@@ -46,7 +46,7 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.7
   intensity:
     m_OverrideState: 1
     m_Value: 8
@@ -58,7 +58,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.6132076, g: 0.1533019, b: 0.1533019, a: 1}
+    m_Value: {r: 0.6698113, g: 0.14217694, b: 0.14217694, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   lift:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0}
