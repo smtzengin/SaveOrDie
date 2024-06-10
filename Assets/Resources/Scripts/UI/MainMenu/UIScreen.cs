@@ -1,15 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIScreen : MonoBehaviour
 {
-
     public bool isModal = false;
     [SerializeField] private UIScreen previousScreen = null;
 
     public static UIScreen activeScreen;
-
 
     public static void Focus(UIScreen screen)
     {
@@ -39,10 +37,11 @@ public class UIScreen : MonoBehaviour
             gameObject.SetActive(true);
     }
 
-    private void Defocus()
+    public void Defocus()
     {
         if (gameObject)
             gameObject.SetActive(false);
+        previousScreen = null; 
     }
 
     public void Back()
@@ -50,9 +49,10 @@ public class UIScreen : MonoBehaviour
         if (previousScreen)
         {
             Defocus();
+            UIScreen previous = previousScreen;
             activeScreen = previousScreen;
+            previousScreen = previous.previousScreen;
             activeScreen.Focus();
-            previousScreen = null;
         }
     }
 

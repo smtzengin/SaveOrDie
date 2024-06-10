@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSlider: {fileID: 285260370}
   VFXSlider: {fileID: 1779636206}
-  graphicDropdown: {fileID: 0}
+  graphicDropdown: {fileID: 248397366}
   musicPercentageText: {fileID: 1048213325}
   VFXPercentageText: {fileID: 353799429}
 --- !u!1 &330585543

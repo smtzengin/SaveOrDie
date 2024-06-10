@@ -41,4 +41,6 @@ public class SettingsPanel : MonoBehaviour
         musicPercentageText.text = $"{(int)(musicSlider.value * 100)}%";
         VFXPercentageText.text = $"{(int)(VFXSlider.value * 100)}%";
     }
+
+    
 }
