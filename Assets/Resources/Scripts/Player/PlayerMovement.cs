@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth != null && playerHealth.currentHealth == 0) return;
+        //if (playerHealth != null && playerHealth.currentHealth == 0) return;
 
         GroundCheck();
         Move();

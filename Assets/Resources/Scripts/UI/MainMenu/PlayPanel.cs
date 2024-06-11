@@ -11,6 +11,7 @@ public class PlayPanel : MonoBehaviour
 
     private void Awake()
     {
+        UIScreen.activeScreen = this.GetComponent<UIScreen>();
         playButton.onClick.AddListener(LoadGameScene);
         exitButton.onClick.AddListener(Quit);
     }

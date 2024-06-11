@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity;
+    private const string SensitivityPrefKey = "Sensitivity";
     public Transform playerBody;
     public float xRotationLimit = 90f;
     public float yRotationLimit = 45f;
@@ -13,6 +14,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        mouseSensitivity = PlayerPrefs.GetFloat(SensitivityPrefKey);
     }
 
     void Update()

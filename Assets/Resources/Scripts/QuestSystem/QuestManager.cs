@@ -9,7 +9,7 @@ public class QuestManager : MonoBehaviour
     public static QuestManager instance;
 
     public QuestPanel questPanel;
-    private QuestDataSO currentQuest;
+    public QuestDataSO currentQuest;
     private event Action onQuestCompleted;
     public bool isQuestStarted;
 
@@ -60,6 +60,7 @@ public class QuestManager : MonoBehaviour
         else if(currentQuest.targetTag == "Boss")
         {
             //TO DO: Save the girl
+            UIManager.Instance.ShowEndGamePanel();
         }
         
     }

@@ -32,11 +32,16 @@ public class Pistol : MonoBehaviour, IGun
     }
     public void ReloadBullet()
     {
-        if (ClipCount < SpareBullets)
+        if (ClipCount < SpareBullets && MaxClipCount > 0)
         {
             int neededBullet = SpareBullets - ClipCount;
             ClipCount += neededBullet;
             MaxClipCount -= neededBullet;
+            if (MaxClipCount < 0) MaxClipCount = 0;
+        }
+        else
+        {
+            Debug.Log("No have clip!");
         }
     }
 

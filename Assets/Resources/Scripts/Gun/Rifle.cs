@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +7,9 @@ public class Rifle : MonoBehaviour, IGun
     public GunSO GunSO;
     public Sprite GunSprite;
     public string GunName;
-    public int ClipCount; // Current bullets in the magazine
-    public int MaxClipCount; // Maximum capacity of the magazine
-    public int SpareBullets; // Total spare bullets
+    public int ClipCount; 
+    public int MaxClipCount; 
+    public int SpareBullets; 
     public int BodyDamage;
     public int HeadDamage;
     public GameObject ParticleEffect;
@@ -35,11 +35,16 @@ public class Rifle : MonoBehaviour, IGun
 
     public void ReloadBullet()
     {
-       if(ClipCount < SpareBullets)
+       if(ClipCount < SpareBullets && MaxClipCount > 0)
         {
             int neededBullet = SpareBullets - ClipCount;
             ClipCount += neededBullet;
             MaxClipCount -= neededBullet;
+            if(MaxClipCount < 0) MaxClipCount = 0;
+        }
+        else
+        {
+            Debug.Log("No have clip!");
         }
     }
 

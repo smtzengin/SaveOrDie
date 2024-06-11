@@ -41,7 +41,6 @@ public class UIScreen : MonoBehaviour
     {
         if (gameObject)
             gameObject.SetActive(false);
-        previousScreen = null; 
     }
 
     public void Back()

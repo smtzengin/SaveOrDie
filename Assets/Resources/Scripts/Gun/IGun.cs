@@ -1,9 +1,6 @@
-
-
-public interface IGun 
+public interface IGun
 {
-    public void SetupGun();
-    public void ReloadBullet();
-    public void Shoot();
-
+    void SetupGun();
+    void ReloadBullet();
+    void Shoot();
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public bool isDead;
     public event Action OnPlayerHealthChanged;
     public AudioSource audioSource;
+    
 
 
     private void Awake()
@@ -22,6 +23,14 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (isDead)
+        {
+            HandleDeath();
+        }
+    }
+
 
     public void TakeDamage(int damage)
     {
@@ -31,13 +40,19 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth -= damage;
             OnPlayerHealthChanged?.Invoke();
-        }
-        else
-        {
-            currentHealth = minHealth;
-            isDead = true;
-        }
-    }
 
+            if(currentHealth <= minHealth)
+            {
+                currentHealth = minHealth;
+                isDead = true;
+            }
+        }
+        
+    }
+    private void HandleDeath()
+    {
+        // Kullanıcı öldüğünde TryAgainPanel'i göster
+        UIManager.Instance.ShowTryAgainPanel();
+    }
 
 }

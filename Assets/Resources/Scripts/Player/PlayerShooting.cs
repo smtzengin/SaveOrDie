@@ -35,9 +35,7 @@ public class PlayerShooting : MonoBehaviour
     }
 
     private void Shoot()
-    {
-        playerAnimator.ChangeState(new ShootState());
-
+    { 
         int currentGun = playerGunHolder.GetCurrentGun();
 
         switch (currentGun)
@@ -48,6 +46,7 @@ public class PlayerShooting : MonoBehaviour
                 var rifle = playerGunHolder.playerPrimaryGun.GetComponent<Rifle>();
                 if (rifle.ClipCount > 0)
                 {
+                    playerAnimator.ChangeState(new ShootState());
                     Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                     RaycastHit hit;
                     Vector3 targetPoint;
@@ -75,6 +74,7 @@ public class PlayerShooting : MonoBehaviour
                 var pistol = playerGunHolder.playerSecondaryGun.GetComponent<Pistol>();
                 if (pistol.ClipCount > 0)
                 {
+                    playerAnimator.ChangeState(new ShootState());
                     Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                     RaycastHit hit;
                     Vector3 targetPoint;
