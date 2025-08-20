@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public DialogueDataSO initialDialogue;
     public QuestManager questManager;
 
+
     private void Start()
     {
         ShowDialogue(initialDialogue);
